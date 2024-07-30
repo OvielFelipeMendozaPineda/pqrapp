@@ -1,4 +1,4 @@
-package pqr.pqrapp.domain.dto;
+package pqr.pqrapp.persistence.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -6,33 +6,29 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Chapter
+ */
 @Entity
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
-public class DetailResponse {
+public class Chapter {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String number;
+    private String title;
 
-    @OneToOne
-    @JoinColumn(name = "response_option_id")
-    private ResponseOption responseOption;
-
-    @ManyToOne()
-    @JoinColumn(name = "question_id")
-    private Question question;
-
-
+    // LLaves foraneas
     @ManyToOne
-    @JoinColumn(name = "response_id")
-    private Response response;
+    @JoinColumn(name = "survey_id")
+    private Survey survey;
 
-    private String responseText;
+
 }

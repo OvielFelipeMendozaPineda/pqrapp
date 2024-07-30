@@ -1,4 +1,4 @@
-package pqr.pqrapp.domain.dto;
+package pqr.pqrapp.persistence.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,10 +8,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Catalog
+ */
 @Entity
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
 public class Catalog {
 
     @Id
@@ -19,4 +22,6 @@ public class Catalog {
     private Long id;
 
     private String name;
+
+    //  Listas
 }

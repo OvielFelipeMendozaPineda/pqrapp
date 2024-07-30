@@ -1,9 +1,8 @@
-package pqr.pqrapp.domain.dto;
+package pqr.pqrapp.persistence.entity;
 
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,34 +13,30 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Survey
+ */
+
 @Entity
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
 public class Survey {
-    
-    @Embedded
-    Audit audit = new Audit();
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Embedded
+    Audit audit = new Audit();
 
     private String description;
-
-    @Column(name = "name", nullable = false)
     private String name;
-    
-    @OneToMany(mappedBy = "id", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Chapter> chapters;
 
-    @OneToMany(mappedBy = "id", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Question> questions;
+    // Listas 
 
-    @OneToMany(mappedBy = "id", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Response> responses;
+    @OneToMany(mappedBy = "survey", cascade = CascadeType.ALL,  orphanRemoval = true)
+    private List<Chapter> chapter;
 
 
-    
 }

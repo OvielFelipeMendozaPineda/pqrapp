@@ -1,4 +1,4 @@
-package pqr.pqrapp.domain.dto;
+package pqr.pqrapp.persistence.entity;
 
 import java.time.LocalDateTime;
 
@@ -8,13 +8,15 @@ import jakarta.persistence.PrePersist;
 
 @Embeddable
 public class Audit {
+
+
     @Column(name = "create_At")
     private LocalDateTime createAt;
     @Column(name = "update_At")
     private LocalDateTime updateAt;
 
     @PrePersist
-    public void PrePersistAudit() {
+    private void setCreateTime() {
         createAt = LocalDateTime.now();
     }
 }
