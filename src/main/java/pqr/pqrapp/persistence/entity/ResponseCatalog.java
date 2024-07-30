@@ -10,31 +10,28 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/**
- * ResponseOption
- */
-
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ResponseOption {
+public class ResponseCatalog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String optionValue;
-    private String commentResponse;
-    private String optionText;
+    private ResponseOption responseOption;
+    private String responseText;
 
-    //  llaves foraneas
+    // Llaves foraneas
 
+    @ManyToOne
+    @JoinColumn(name = "catalog_id")
+    private Catalog catalog;
     @ManyToOne
     @JoinColumn(name = "question_id")
     private Question question;
-
     @ManyToOne
-    @JoinColumn(name = "parent_question_id")
-    private Question parentQuestion;
+    @JoinColumn(name = "response_id")
+    private Response response;
 
 }
