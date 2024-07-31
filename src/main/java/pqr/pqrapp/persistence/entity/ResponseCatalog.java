@@ -19,7 +19,9 @@ public class ResponseCatalog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private ResponseOption responseOption;
+
+
+    private Long responseOption;
     private String responseText;
 
     // Llaves foraneas
